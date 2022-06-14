@@ -11,7 +11,8 @@ target/
 *.iws
 *.iml
 *.ipr
-
+.idea
+.idea/workspace.xml
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -36,3 +37,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
