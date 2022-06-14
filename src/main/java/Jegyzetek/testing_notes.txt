@@ -1,2 +1,6 @@
 teacher github notes
 https://github.com/Training360/swd-java-2022-06-14
+
+
+
+file letöltést nem nagyon támogatja, inkább javán belül más csomag használatával....hogy a quit() ne szakítsa félbe

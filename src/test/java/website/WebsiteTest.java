@@ -1,51 +1,36 @@
 package website;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+@Slf4j
+@ExtendWith(SeleniumExtension.class)
 class WebsiteTest {
 
-    WebDriver driver;
 
-    @BeforeAll
-    static void initWebDriverManager() {
-        WebDriverManager.chromedriver().setup();
-    }
-    @BeforeEach
-    void initDriver() {
-        driver = new ChromeDriver();
-        driver.get("https://www.python.org");
-    }
-    @AfterEach
-    void quitDriver() {
-        driver.quit();
-    }
 
     @Test
-    void testSearch(){
-        //Given
-
-
-        //When
+    void testSearch(WebDriver driver){
         driver.findElement(By.id("id-search-field")).click();
         driver.findElement(By.id("id-search-field")).sendKeys("tasting");
         driver.findElement(By.id("submit")).click();
+        log.debug("Click on GO button");
         //Then
         String res = driver.findElement(By.cssSelector("h3:nth-child(2)")).getText();
         assertEquals("Results", res);
     }
 
     @Test
-    void testPsf(){
+    void testPsf(WebDriver driver){
         driver.findElement(By.linkText("PSF")).click();
+        log.debug("Click on PSF menu item");
         assertEquals("Python Software Foundation", driver.getTitle());
+
     }
 
 
