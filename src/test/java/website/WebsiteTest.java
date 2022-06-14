@@ -10,12 +10,14 @@ import org.openqa.selenium.WebDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 @ExtendWith(SeleniumExtension.class)
+@SeleniumTest
 class WebsiteTest {
 
 
 
     @Test
     void testSearch(WebDriver driver){
+        driver.get("https://www.python.org");
         driver.findElement(By.id("id-search-field")).click();
         driver.findElement(By.id("id-search-field")).sendKeys("tasting");
         driver.findElement(By.id("submit")).click();
@@ -27,6 +29,7 @@ class WebsiteTest {
 
     @Test
     void testPsf(WebDriver driver){
+        driver.get("https://www.python.org");
         driver.findElement(By.linkText("PSF")).click();
         log.debug("Click on PSF menu item");
         assertEquals("Python Software Foundation", driver.getTitle());
