@@ -9,3 +9,29 @@ selectorok
 html + xml = xhtml
 
 bootsrap = nagy, előre gyártott felhasználható css fájl / fájlkönyvtár
+
+sima string = tag
+.string = class
+#string = id
+
+szülő > gyermek
+
+A selectorban lehet ezt is használva keresni (pl: css selectorral)
+
+ne dőlj be a hettős kettőspontnak, elég egy.
+div::sercly = wrong!
+div:sercly = correct
+
+a giten föntlévő tanári projektben benne az "swd-java.md", azon belül a példákban valamiért duplakettőspoonttal jelzi
+
+
+érdemes használni a relatív kijelöléseket
+
+driver.navigate.x()
+honlapon belüli előre-hátra, frissítés, stb
+
+
+js futtatáskor lehet pin-elni egy scriptet a böngészőbe, és akkor tudod újra-és-újra futtatni
+
+inkább ne a sleep() funkciót használjuk, hanem a wait()-et (ilyenkor meg kell adni, hogy: mire vár)
+
