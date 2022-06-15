@@ -1,17 +1,19 @@
 package website;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SeleniumTest
 @Slf4j
@@ -70,5 +72,50 @@ public class ComponentsTest {
             employees.add(new Employee(id, name, yearOfBorth));
         }
         return employees;
+    }
+
+    @SneakyThrows
+    @Test
+    void testInputField(WebDriver driver){
+        driver.get("http://127.0.0.1:5555/components/index.html");
+        var input = driver.findElement(By.name("text"));
+        input.sendKeys("hello input");
+        //Thread.sleep(5000);
+
+        log.debug(input.getDomProperty("value"));
+        //driver.close();
+    }
+
+    @Test
+    void tryToCheckCheckable(WebDriver driver){
+        driver.get("http://127.0.0.1:5555/components/index.html");
+        driver.findElement(By.name("checkbox")).click();
+        assertTrue(driver.findElement(By.name("checkbox")).isEnabled());
+    }
+    @Test
+    void tryToCheckUnCheckable(WebDriver driver){
+        driver.get("http://127.0.0.1:5555/components/index.html");
+        driver.findElement(By.name("disabled-checkbox")).click();
+        assertFalse(driver.findElement(By.name("disabled-checkbox")).isEnabled());
+    }
+
+    @Test
+    void testRadioButton(WebDriver driver){
+        driver.get("http://127.0.0.1:5555/components/index.html");
+        driver.findElement(By.id("radiobtn1")).click();
+        var one = driver
+                .findElements(By.cssSelector("input[type=radio]"))
+                .stream()
+                .filter(we -> we.isSelected())
+                .count();
+        assertEquals(1, one);
+    }
+
+    @Test
+    void testSelect(WebDriver driver){
+        driver.get("http://127.0.0.1:5555/components/index.html");
+        var select = new Select(driver.findElement(By.id("dropdown")));
+        select.selectByValue("option3");
+        assertEquals("Option 3", select.getFirstSelectedOption().getText());
     }
 }

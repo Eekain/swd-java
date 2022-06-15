@@ -10,12 +10,12 @@ import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.util.List;
 
-public class SeleniumExtension implements BeforeEachCallback, BeforeAllCallback, AfterAllCallback, ParameterResolver {
+public class SeleniumExtension implements BeforeEachCallback, BeforeAllCallback, AfterEachCallback, ParameterResolver {
 
     WebDriver driver;
 
     @Override
-    public void afterAll(ExtensionContext extensionContext) throws Exception {
+    public void afterEach(ExtensionContext extensionContext) throws Exception {
         driver.quit();
     }
 

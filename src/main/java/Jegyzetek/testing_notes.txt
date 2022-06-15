@@ -34,4 +34,5 @@ honlapon belüli előre-hátra, frissítés, stb
 js futtatáskor lehet pin-elni egy scriptet a böngészőbe, és akkor tudod újra-és-újra futtatni
 
 inkább ne a sleep() funkciót használjuk, hanem a wait()-et (ilyenkor meg kell adni, hogy: mire vár)
+wait(meg kell adni második paraméterként, hogy maximum meddig várjon, ha addig nem jön elő, exceptionthrow)
 
