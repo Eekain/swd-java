@@ -36,3 +36,20 @@ js futtatáskor lehet pin-elni egy scriptet a böngészőbe, és akkor tudod új
 inkább ne a sleep() funkciót használjuk, hanem a wait()-et (ilyenkor meg kell adni, hogy: mire vár)
 wait(meg kell adni második paraméterként, hogy maximum meddig várjon, ha addig nem jön elő, exceptionthrow)
 
+
+page object tervezési minta:
+ a page objekt olyan java oisztály, amelyet egy fdarab képernyőnek feleltetek meg.
+ Ebbe az object-be írom *kizárólag* a selenium kóddot.
+ Ezen kívül megírom a teszesetet, és az összes teszteset ezt a page objekt-et használja
+
+
+ki lehet szervezni pageobject-be a dolgok indítását/működését, hogy a tesztlépések közelebb áljanak a valósághoz
+
+default value tervezési minta:
+hogy ne kelljen köteéezőúenm megadni minden adatot, így ha pl nem adunk meg adatot, akkor a page objecct feladata kitölteni random adattal
+
+RestAssured API should be used to download and get files.
+BeautifulSoup is better for Link spidering
+
+
+VNC viewer + vncServer // távoli bejelentkezéshez és kimenet (monitor) megfigyelésre használható ingyenes gép

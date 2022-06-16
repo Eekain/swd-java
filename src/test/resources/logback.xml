@@ -13,4 +13,5 @@
     </root>
 
     <logger name="website" level="debug"/>
+    <logger name="locations" level="debug"/>
 </configuration>

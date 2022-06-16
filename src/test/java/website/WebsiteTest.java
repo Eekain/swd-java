@@ -1,19 +1,22 @@
 package website;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
-@ExtendWith(SeleniumExtension.class)
 @SeleniumTest
 class WebsiteTest {
 
-
+    WebsitePageObject page;
+    @BeforeEach
+    void init(WebDriver driver){
+        page = new WebsitePageObject(driver);
+    }
 
     @Test
     void testSearch(WebDriver driver){
@@ -33,6 +36,23 @@ class WebsiteTest {
         driver.findElement(By.linkText("PSF")).click();
         log.debug("Click on PSF menu item");
         assertEquals("Python Software Foundation", driver.getTitle());
+
+    }
+    @Test
+    void testSearchWithWPO(){
+        page.go().clickOnCreateSeachLink().sendSearchterm("Java").justSubmit();
+        log.debug("Click on GO button");
+        //Then
+        String res = page.didItWork();
+        assertEquals("Results", res);
+    }
+
+    @Test
+    void testPsfWithWPO(){
+        page.go().clickByLinkText("PSF");
+
+        log.debug("Click on PSF menu item");
+        assertEquals("Python Software Foundation", page.getTitle());
 
     }
 
