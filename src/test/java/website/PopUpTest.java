@@ -25,11 +25,18 @@ public class PopUpTest {
     void testTraining(WebDriver driver){
         driver.get("https://training360.com");
         var wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         var modal = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("NewsletterModal"))));
+        wait.until(d -> {
+                    log.debug("Check opacity");
+                    return modal.getCssValue("opacity").equals("1");
+                }
+
+        );
         log.debug("Modal has appeared");
         assertTrue(modal.isDisplayed());
-        Thread.sleep(1000);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("NewsletterModalCloseButton"))).click();
+        //Thread.sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#NewsletterModalCloseButton > span"))).click();
         //modal.findElement(By.id("NewsletterModalCloseButton")).click();
         wait.until(ExpectedConditions.invisibilityOf(modal));
         assertFalse(modal.isDisplayed());
