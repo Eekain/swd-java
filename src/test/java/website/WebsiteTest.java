@@ -38,6 +38,7 @@ class WebsiteTest {
         assertEquals("Python Software Foundation", driver.getTitle());
 
     }
+//from this on, this uses WebsitePageObject
     @Test
     void testSearchWithWPO(){
         page.go().clickOnCreateSeachLink().sendSearchterm("Java").justSubmit();
