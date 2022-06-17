@@ -4,5 +4,5 @@ JUnit, Selenium, etc
 - [x] JUnit 
 - [x] SeleniumExtension
 - [x] Selenium IDE
-- [ ] Selenium WebDriver
-- [ ] Selenium Grid
+- [x] Selenium WebDriver
+- [x] Selenium Grid
